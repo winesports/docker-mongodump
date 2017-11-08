@@ -2,7 +2,7 @@ FROM mongo:3.4
 MAINTAINER Artem Kurbatov <mail@tenorok.ru>
 
 RUN apt-get update && \
-    apt-get install -y cron ssh-client expect --no-install-recommends && \
+    apt-get install -y cron ftp --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD backup.sh /backup.sh
