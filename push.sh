@@ -1,9 +1,4 @@
-#!/bin/bash
-set -e
-
-export HOST=${HOST:-10.11.12.1}
-export USERNAME=${USERNAME}
-export PASSWORD=${PASSWORD}
+#!/usr/bin/expect
 
 set timeout 10
 set host ${HOST}
