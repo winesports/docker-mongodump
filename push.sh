@@ -3,8 +3,8 @@ set timeout 10
 set host ${HOST}
 set username ${USERNAME}
 set password ${PASSWORD}
-set src_file $filename
-set dest_file $filename
+set src_file ${PUSH_FILENAME}
+set dest_file ${PUSH_FILENAME}
 spawn scp $src_file $username@$host:$dest_file
  expect {
  "(yes/no)?"
