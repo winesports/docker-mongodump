@@ -45,6 +45,3 @@ if [[ $BACKUP_EXPIRE_DAYS ]]; then
 fi
 
 printf "$(date +%Y-%m-%d:%H:%M:%S) job finished\n\n"
-
-# Push Backup File
-exec /push.sh
