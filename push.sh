@@ -1,11 +1,10 @@
 #!/usr/bin/expect
-
 set timeout 10
-set host ${HOST}
-set username ${USERNAME}
-set password ${PASSWORD}
+set host [lindex $argv 1]
+set username [lindex $argv 2]
+set password [lindex $argv 3]
 set src_file ${PUSH_FILENAME}
-set dest_file ${PUSH_FILENAME}
+set dest_file ${PUSH_FILENAME} 
 spawn scp $src_file $username@$host:$dest_file
  expect {
  "(yes/no)?"
@@ -20,3 +19,4 @@ spawn scp $src_file $username@$host:$dest_file
 }
 expect "100%"
 expect eof
+

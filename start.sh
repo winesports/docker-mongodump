@@ -1,9 +1,6 @@
 #!/bin/bash
 
 set -e
-export HOST=${HOST}
-export USERNAME=${USERNAME}
-export PASSWORD=${PASSWORD}
 
 CRON_SCHEDULE=${CRON_SCHEDULE:-0 0 * * *}
 
