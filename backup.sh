@@ -47,4 +47,5 @@ fi
 printf "$(date +%Y-%m-%d:%H:%M:%S) job finished\n\n"
 
 # Push Backup File
+export $FILE
 exec /push.sh
