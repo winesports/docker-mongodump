@@ -1,4 +1,8 @@
 #!/usr/bin/expect
+export HOST=${HOST}
+export USERNAME=${USERNAME}
+export PASSWORD=${PASSWORD}
+
 set timeout 10
 set host ${HOST}
 set username ${USERNAME}
