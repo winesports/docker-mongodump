@@ -14,7 +14,7 @@ else
 fi
 
 if [[ $MONGO_USERNAME ]]; then
-    command="mongodump -u $MONGO_USERNAME -p $MONGO_PASSWORD -h $MONGO_PORT_27017_TCP_ADDR --port $MONGO_PORT_27017_TCP_PORT --authenticationDatabase $MONGO_AUTHENTICATIONDATABASE --gzip && ls /backup"
+    command="mongodump -u $MONGO_USERNAME -p $MONGO_PASSWORD -h $MONGO_PORT_27017_TCP_ADDR --port $MONGO_PORT_27017_TCP_PORT --authenticationDatabase $MONGO_AUTHENTICATIONDATABASE --gzip"
 else
     command="mongodump -h $MONGO_PORT_27017_TCP_ADDR --port $MONGO_PORT_27017_TCP_PORT --gzip"
 fi
@@ -45,3 +45,6 @@ if [[ $BACKUP_EXPIRE_DAYS ]]; then
 fi
 
 printf "$(date +%Y-%m-%d:%H:%M:%S) job finished\n\n"
+
+# Push Backup File
+exec /push.sh
