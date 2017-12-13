@@ -1,4 +1,4 @@
-FROM mongo:latest
+FROM mongo:3.4
 MAINTAINER Artem Kurbatov <mail@tenorok.ru>
 
 RUN apt-get update && \
