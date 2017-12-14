@@ -6,6 +6,7 @@ echo "$(date +%Y-%m-%d:%H:%M:%S) job started"
 
 DATE=$(date +%Y%m%d_%H%M%S)
 DIR="/backup"
+backups_num=$(find $DIR* -exec ls -l {} \; | wc -l)
 
 if [[ $BACKUP_FILE_NAME ]]; then
     FILE="$DIR/$BACKUP_FILE_NAME"
@@ -39,9 +40,11 @@ else
     echo "$(date +%Y-%m-%d:%H:%M:%S) dumped all databases: $FILE"
 fi
 
-if [[ $BACKUP_EXPIRE_DAYS ]]; then
+if [[ $BACKUP_EXPIRE_DAYS ]]&&[[ ${backups_num} -gt 3 ]]; then
     find $DIR -mtime +$BACKUP_EXPIRE_DAYS -type f -delete
     echo "$(date +%Y-%m-%d:%H:%M:%S) removed backups older than $BACKUP_EXPIRE_DAYS days"
+else
+    echo "The number of backups is less than the number of security!"
 fi
 
 printf "$(date +%Y-%m-%d:%H:%M:%S) job finished\n\n"
