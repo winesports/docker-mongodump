@@ -19,8 +19,8 @@ else
     CRON_ENV="$CRON_ENV\nMONGO_USERNAME='$MONGO_USERNAME'"
     CRON_ENV="$CRON_ENV\nMONGO_PASSWORD='$MONGO_PASSWORD'"
     CRON_ENV="$CRON_ENV\nMONGO_AUTHENTICATIONDATABASE='$MONGO_AUTHENTICATIONDATABASE'"
-    echo -e "$CRON_SCHEDULE /backup.sh > $LOGFIFO 2>&1" | crontab -
-    crontab -l
+    echo -e "$CRON_ENV\$CRON_SCHEDULE /backup.sh > $LOGFIFO 2>&1" | crontab -
+    echo "Setup cronjob: $CRON_SCHEDULE /backup.sh > $LOGFIFO 2>&1"
     cron
     tail -f "$LOGFIFO"
 fi
