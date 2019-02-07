@@ -15,9 +15,9 @@ else
 fi
 
 if [[ $MONGO_USERNAME ]]; then
-    command="mongodump -u $MONGO_USERNAME -p $MONGO_PASSWORD -h $MONGO_PORT_27017_TCP_ADDR --port $MONGO_PORT_27017_TCP_PORT --authenticationDatabase $MONGO_AUTHENTICATIONDATABASE --gzip"
+    command="mongodump -u $MONGO_USERNAME -p $MONGO_PASSWORD -h $MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT --authenticationDatabase $MONGO_AUTHENTICATIONDATABASE --gzip"
 else
-    command="mongodump -h $MONGO_PORT_27017_TCP_ADDR --port $MONGO_PORT_27017_TCP_PORT --gzip"
+    command="mongodump -h $MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT --gzip"
 fi
 
 # All output of mongodump is stderr, therefore filter the errors manually.
