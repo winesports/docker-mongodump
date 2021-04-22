@@ -20,6 +20,13 @@ else
     command="mongodump --host='$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT' --gzip"
 fi
 
+if [[ $EXCLUDE_COLLECTIONS ]]; then
+    command="$command --db=service-abios"
+    for collection in $EXCLUDE_COLLECTIONS; do
+	command="$command --excludeCollection=$collection"
+    done
+fi
+
 # All output of mongodump is stderr, therefore filter the errors manually.
 filter_errors="2> >(grep -i 'failed\|error')"
 
