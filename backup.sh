@@ -21,7 +21,7 @@ else
 fi
 
 if [[ $EXCLUDE_COLLECTIONS ]]; then
-    command="$command --db=service-abios"
+    command="$command --db=*"
     for collection in $EXCLUDE_COLLECTIONS; do
 	command="$command --excludeCollection=$collection"
     done
